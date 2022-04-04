@@ -7,7 +7,7 @@ use std::process::Command;
     if input == "1" {
         launch_command("pfetch", "-d");
     }
-    if input == "2" {
+    else if input == "2" {
         download_file("https://gist.githubusercontent.com/mrquantumoff/0b443e43759830f88075514dfdae8df4/raw/ef47c07edc54909e668ce9b7625ff3f73d097a64/.zshrc", "./.qzshrc");
     }
 }
@@ -39,5 +39,5 @@ pub fn data_load(Type: &str, file: &str) {
         .output()
         .expect("Failed to execute process");
     let mut linecount: i32 = 0;
-    //println!("{}", String::from_utf8_lossy(&output.stdout));
+    
 }
