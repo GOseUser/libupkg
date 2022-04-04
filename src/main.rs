@@ -1,9 +1,10 @@
+#[allow(unused_imports)]
 use std::process::Command;
 use std::env;
 use std::io;
 use std::fs;
-#[allow(unused_imports)]
-#[allow(dead_code)]
+
+
 
  fn main() {
     println!("Which function do you want to test?");
@@ -17,15 +18,18 @@ use std::fs;
         download_file("https://gist.githubusercontent.com/mrquantumoff/0b443e43759830f88075514dfdae8df4/raw/ef47c07edc54909e668ce9b7625ff3f73d097a64/.zshrc", "./.qzshrc", true);
     }
 }
-
+#[allow(dead_code)]
 pub struct appnameandurls{
     name: Vec<String>,
     url:  Vec<String>
 }
+#[allow(dead_code)]
 pub struct repos {
     name:  Vec<String>,
     url:  Vec<String>
 }
+
+
 pub fn launch_command(command: &str, args: &str) {
     let output = Command::new(command)
         .arg(args)
