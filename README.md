@@ -1,4 +1,10 @@
 # UPKG Backend library
+## Dependencies
+* Unified Dependencies:
+    * [wget](https://www.gnu.org/software/wget/)
+* Development Dependencies:
+    * [cargo](https://crates.io/crates/cargo)
+    * [rust](https://www.rust-lang.org/)
 ## Contributing
 * Fork the repository on [GitHub](https://github.com/universal-packaging-tool/libupkg/fork)
 * Modify things in your fork repository
