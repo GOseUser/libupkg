@@ -50,6 +50,8 @@ pub fn download_file(url: &str, output_file: &str, out: bool) {
         .output()
         .expect("Failed to execute process");
 }
+#[allow(unused_variables)]
+#[allow(non_camel_case_types)]
 pub fn data_load(Type: &str, file: &str) {
     println!("Loading {}", file);
     let contents = fs::read_to_string(file).expect("Something went wrong reading the file");
