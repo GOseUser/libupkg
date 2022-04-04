@@ -1,41 +1,32 @@
 #[allow(unused_imports)]
-use std::process::Command;
-use std::env;
-use std::io;
-use std::fs;
-
-
-
- fn main() {
-    println!("Which function do you want to test?");
-    let mut input = String::new();
-    std::io::stdin().read_line(&mut input).unwrap();
-    let input = input.trim();
-    if input == "1" {
-        launch_command("pfetch", "-d");
-    }
-    else if input == "2" {
-        download_file("https://gist.githubusercontent.com/mrquantumoff/0b443e43759830f88075514dfdae8df4/raw/ef47c07edc54909e668ce9b7625ff3f73d097a64/.zshrc", "./.qzshrc", true);
-    }
-}
+use std::{env, fs, io, process::*};
 #[allow(dead_code)]
-pub struct appnameandurls{
-    name: Vec<String>,
-    url:  Vec<String>
-}
-#[allow(dead_code)]
-pub struct repos {
-    name:  Vec<String>,
-    url:  Vec<String>
-}
+
+#[allow(non_upper_case_globals)]
+pub const config_path: &str = "/etc/upkg/config.d/";
+#[allow(non_upper_case_globals)]
+pub const sources_file: &str = "/etc/upkg/config.d/sources.Ud";
+#[allow(non_upper_case_globals)]
+pub const packages_file: &str = "/etc/upkg/config.d/packages.Ud";
+#[allow(non_upper_case_globals)]
+pub const downloads_path: &str = "/var/lib/upkg/downloads/";
+#[allow(non_upper_case_globals)]
+pub const packages_path: &str = "/var/lib/upkg/packages/";
+#[allow(non_upper_case_globals)]
+pub const sources_path: &str = "/var/lib/upkg/sources/";
+#[allow(non_upper_case_globals)]
+pub const cache_path: &str = "/var/lib/upkg/cache/";
+pub const VERSION: &str = env!("CARGO_PKG_VERSION");
 
 
-pub fn launch_command(command: &str, args: &str) {
+pub fn launch_command(command: &str, args: &str) -> String {
     let output = Command::new(command)
         .arg(args)
         .output()
         .expect("Failed to execute process");
-    println!("{}", String::from_utf8_lossy(&output.stdout));
+    let outt: String = String::from_utf8_lossy(&output.stdout).to_string();
+    let out = &outt;
+    return out.to_string();
 }
 pub fn download_file(url: &str, output_file: &str, out: bool) {
     if out==true {println!("Downloading {}", url);}
