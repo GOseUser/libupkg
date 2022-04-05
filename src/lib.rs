@@ -172,15 +172,14 @@ pub fn get_sources() -> repos {
     let mut repos_names: Vec<String> = Vec::new();
     let mut repos_urls: Vec<String> = Vec::new();
     let mut conts = &contents;
+    
     let mut conts_split = conts.split("\n");
     for cont in conts_split {
         if cont.contains("###COMMENT###") {
             continue;
         }
         else {
-            let mut splitted = cont.split("|");
-            let mut name = splitted.next().unwrap();
-            let mut url = splitted.next().unwrap();
+            let (name, url) = cont.split_once("|").unwrap();
             repos_names.push(name.to_string());
             repos_urls.push(url.to_string());
         }
@@ -210,9 +209,7 @@ pub fn get_latestversions() -> versions {
                 let type1 = "app_name_and_version, ";
                 if cont.contains(type1) {
                     let namevalue = cont.replace(type1, "");
-                    let mut splitted = namevalue.split("|");
-                    let name = splitted.next().unwrap();
-                    let ver = splitted.next().unwrap();
+                    let (name, ver) = namevalue.split_once("|").unwrap();
                     app_names.push(name.to_string());
                     app_versions.push(ver.parse::<i32>().unwrap());
                 }       
